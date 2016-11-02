@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,8 +49,19 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.button3:  //파일 생성
+                try {
+                    {
+                        FileOutputStream fos = new FileOutputStream(filename);
+                        String srt = "Hello";
+                        fos.write("안녕하세요".getBytes());
+                        Toast.makeText(getApplicationContext(),"파일 생성",Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(getApplicationContext(),"파일 생성",Toast.LENGTH_SHORT).show();
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
 
             case R.id.button4:  //파일 읽기
